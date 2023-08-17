@@ -1,0 +1,28 @@
+<h1 align="center">SkeletonAPP</h1>
+<p align="center">Aquí comienza todo</p>
+<ion-content class="ion-padding">
+<br>
+<h2 align="center">Bienvenido!</h2>
+
+<form [formGroup]="loginForm">
+  <ion-item class="transparent-input">
+    <ion-input formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Usuario" labelPlacement="stacked" placeholder=""></ion-input>
+  </ion-item>
+  <br>
+  <ion-item class="transparent-input">
+    <ion-input formControlName="contraseña" id="inputContraseña" style="font-size: 20px;" label="Contraseña" labelPlacement="stacked" placeholder="" type="password"></ion-input>
+  </ion-item>
+</form>
+
+
+<br>
+<div class="ion-text-center">
+  <ion-button expand="block" (click)="validarLogin()">Ingresar</ion-button>
+</div>
+<div class="ion-text-center">
+  <ion-button fill="clear" [routerLink]="['/registro']">Crea tu cuenta gratis</ion-button>
+</div>
+
+<P align="center">(Ingreso de prueba: usuario=ADMIN contraseña=0000)</P>
+
+</ion-content>

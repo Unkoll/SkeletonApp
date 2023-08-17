@@ -25,3 +25,8 @@
 #container a {
   text-decoration: none;
 }
+
+.transparent-input {
+  --background: transparent;
+  --border-color: transparent;
+}

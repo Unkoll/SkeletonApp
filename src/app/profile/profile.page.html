@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title align="center">Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="ion-text-center">
+    <ion-button fill="clear" [routerLink]="['/login']">Cerrar Sesión</ion-button>
+  </div>
+
+</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" [routerLink]="['/home']">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="search">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="person" [routerLink]="['/profile']">
+      <ion-icon name="person"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
