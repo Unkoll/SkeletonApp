@@ -1,0 +1,30 @@
+.animated-title{
+  display: inline-block;
+  white-space: nowrap;
+  animation: moveTitle 2.5s infinite, fadeInOut 2.5s infinite;
+  opacity: 1;
+}
+
+@keyframes moveTitle {
+  0%, 100% {
+    transform: translateX(0); }
+  25% {
+    transform: translateX(300%);
+  }
+  50% {
+    position: relative;
+    left: -300%;
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .2;
+  }
+}

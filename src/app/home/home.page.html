@@ -5,11 +5,6 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
-  <div class="ion-text-center">
-    <ion-button expand="block" [routerLink]="['/login']">Cerrar Sesión</ion-button>
-  </div>
-
   <ion-card>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-header>
@@ -45,16 +40,3 @@
   </ion-card>
 
 </ion-content>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home" [routerLink]="['/home']">
-        <ion-icon name="home"></ion-icon>
-      </ion-tab-button>
-      <ion-tab-button tab="search">
-        <ion-icon name="search-outline"></ion-icon>
-      </ion-tab-button>
-      <ion-tab-button tab="person" [routerLink]="['/profile']">
-        <ion-icon name="person-outline"></ion-icon>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>

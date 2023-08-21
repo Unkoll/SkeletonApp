@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
       const contraseña = this.loginForm.value.contraseña;
 
       if (usuario === "ADMIN" && contraseña === "0000") {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/tabs/home');
       }
       else{
         const alert = await this.alertController.create({
