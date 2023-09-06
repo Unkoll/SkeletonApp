@@ -1,7 +1,7 @@
 .animated-title{
-  display: inline-block;
+  display: full-size;
   white-space: nowrap;
-  animation: moveTitle 2.5s infinite, fadeInOut 2.5s infinite;
+  animation: moveTitle 4.5s infinite, fadeInOut 1.5s infinite;
   opacity: 1;
 }
 

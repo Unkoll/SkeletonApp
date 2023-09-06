@@ -6,7 +6,7 @@
 
 <form [formGroup]="loginForm">
   <ion-item class="transparent-input">
-    <ion-input formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Usuario" labelPlacement="stacked" placeholder=""></ion-input>
+    <ion-input [(ngModel)]="usuarioValue" formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Usuario" labelPlacement="stacked" placeholder=""></ion-input>
   </ion-item>
   <br>
   <ion-item class="transparent-input">

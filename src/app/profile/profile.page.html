@@ -11,8 +11,49 @@
     </ion-toolbar>
   </ion-header>
 
-<div class="ion-text-center">
-  <ion-button fill="clear" [routerLink]="['/login']">Cerrar Sesión</ion-button>
+<div class="ion-padding">
+  <div class="ion-text-center">
+    <h1>Bienvenido!</h1>
+  </div>
+  <br><br>
+  <ion-label>Usuario: {{ usuarioValue }}</ion-label>
+  <div class="ion-text-center">
+    <h3>Información Adicional</h3>
+    <br>
+    <ion-item>
+      <ion-input [(ngModel)]="nombreInput" label="Nombre" label-placement="fixed" placeholder="Ingrese Nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="apellidoInput" label="Apellido" label-placement="fixed" placeholder="Ingrese Apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="semestreSelect" label="Nivel de Educación" placeholder="Make a Selection">
+        <ion-select-option value="1">1° Semestre</ion-select-option>
+        <ion-select-option value="2">2° Semestre</ion-select-option>
+        <ion-select-option value="3">3° Semestre</ion-select-option>
+        <ion-select-option value="4">4° Semestre</ion-select-option>
+        <ion-select-option value="5">5° Semestre</ion-select-option>
+        <ion-select-option value="6">6° Semestre</ion-select-option>
+        <ion-select-option value="7">7° Semestre</ion-select-option>
+        <ion-select-option value="8">8° Semestre</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Fecha de nacimiento" label-placement="" placeholder=""></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="limpiarCampos()">Limpiar Campos</ion-button>
+        </ion-col>
+          <ion-col>
+          <ion-button expand="full" (click)="guardarDatos()">Guardar Datos</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <br><br>
+    <ion-button fill="clear" [routerLink]="['/login']">Cerrar Sesión</ion-button>
+  </div>
 </div>
 
 </ion-content>
