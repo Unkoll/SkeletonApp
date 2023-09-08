@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { IonInput, IonSelect } from '@ionic/angular'; // Importa IonSelect
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,41 +10,69 @@ import { IonInput, IonSelect } from '@ionic/angular'; // Importa IonSelect
 })
 export class ProfilePage implements OnInit {
 
-  usuarioValue: string = "";
-  nombre: string = "";
-  apellido: string = "";
   nombreInput: string = "";
   apellidoInput: string = "";
-  semestreSelect: string = "";
+  correoInput: string = "";
+  contrasenaInput: string = "";
+  confcontrasenaInput: string = "";
 
-  constructor(private route: ActivatedRoute, private alertController: AlertController) { }
+  constructor(private router: Router, private route: ActivatedRoute, private alertController: AlertController) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.usuarioValue = params['usuarioValue'];
       this.nombreInput = params['nombreInput'];
       this.apellidoInput = params['apellidoInput'];
-      this.semestreSelect = params['semestreSelect'];
+      this.correoInput = params['correoInput'];
+      this.contrasenaInput = params['contrasenaInput'];
+      this.confcontrasenaInput = params['confcontrasenaInput'];
     })
   }
 
   limpiarCampos() {
-    this.nombre = "";
-    this.apellido = "";
-    this.nombreInput = ''; // Limpia el campo Nombre
-    this.apellidoInput = ''; // Limpia el campo Apellido
-    this.semestreSelect = ''; // Limpia el ion-select (restablece a su valor predeterminado)
+    this.nombreInput = '';
+    this.apellidoInput = '';
+    this.correoInput = '';
+    this.contrasenaInput = '';
+    this.confcontrasenaInput = '';
   }
 
   async guardarDatos() {
-    // Puedes mostrar una alerta con los datos ingresados.
-    const alert = await this.alertController.create({
-      header: 'Datos Guardados',
-      message: 'Nombre: ' + this.nombreInput + '\n' +
-        'Apellido: ' + this.apellidoInput,
-      buttons: ['OK'],
-    });
 
-    await alert.present();
+    if (this.contrasenaInput === this.confcontrasenaInput && this.contrasenaInput != null) {
+
+      let cuenta = {
+        nombre: this.nombreInput,
+        apellido: this.apellidoInput,
+        correo: this.correoInput,
+        contrasena: this.contrasenaInput
+      }
+
+      localStorage.setItem("Cuenta", JSON.stringify(cuenta))
+
+      const alert = await this.alertController.create({
+        header: 'Éxito',
+        message: 'Su cuenta ha sido creada.',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+
+      this.router.navigate(['/login'])
+    }
+    else{
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Las contraseñas no coinciden.',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+    }
+
   }
+
+  contrasenaVisible: boolean = false;
+
+  toggleContrasenaVisibility() {
+    this.contrasenaVisible = !this.contrasenaVisible;
+  }
+
 }

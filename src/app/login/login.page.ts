@@ -10,7 +10,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  usuarioValue: string = ''; // Declarar e inicializar la propiedad
+  usuarioValue: string = '';
+  contrasenaValue: string = '';
 
   loginForm: FormGroup;
 
@@ -27,10 +28,17 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    const localData = localStorage.getItem('cuenta');
+    if (localData != null) {
+      console.log("entra");
+    }
     this.route.queryParams.subscribe(params => {
       this.usuarioValue = params['usuarioValue'];
+      this.contrasenaValue = params['contrasenaValue'];
     })
   }
+
+
 
   async validarLogin() {
     if (this.loginForm.valid) {

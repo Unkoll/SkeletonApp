@@ -6,11 +6,11 @@
 
 <form [formGroup]="loginForm">
   <ion-item class="transparent-input">
-    <ion-input [(ngModel)]="usuarioValue" formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Usuario" labelPlacement="stacked" placeholder=""></ion-input>
+    <ion-input [(ngModel)]="usuarioValue" formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Nombre de Usuario" labelPlacement="stacked" placeholder=""></ion-input>
   </ion-item>
   <br>
   <ion-item class="transparent-input">
-    <ion-input formControlName="contraseña" id="inputContraseña" style="font-size: 20px;" label="Contraseña" labelPlacement="stacked" placeholder="" type="password"></ion-input>
+    <ion-input [(ngModel)]="contrasenaValue" formControlName="contraseña" id="inputContraseña" style="font-size: 20px;" label="Contraseña" labelPlacement="stacked" placeholder="" type="password"></ion-input>
   </ion-item>
 </form>
 
@@ -19,10 +19,19 @@
 <div class="ion-text-center">
   <ion-button expand="block" (click)="validarLogin()">Ingresar</ion-button>
 </div>
-<div class="ion-text-center">
-  <ion-button fill="clear" [routerLink]="['/registro']">Crea tu cuenta gratis</ion-button>
-</div>
-
-<P align="center">(Ingreso de prueba: usuario=ADMIN contraseña=0000)</P>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <ion-button fill="clear" [routerLink]="['/profile']">Crea tu cuenta gratis</ion-button>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="ion-text-center">
+        <ion-button fill="clear" [routerLink]="['/password']">Olvidó su contraseña?</ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 </ion-content>

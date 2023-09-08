@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title align="center" class="animated-title">Perfil</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,46 +7,40 @@
 
 <div class="ion-padding">
   <div class="ion-text-center">
-    <h1>Bienvenido!</h1>
+    <h1>Registro de usuario</h1>
   </div>
-  <br><br>
-  <ion-label>Usuario: {{ usuarioValue }}</ion-label>
+  <br><br><br><br>
   <div class="ion-text-center">
-    <h3>Información Adicional</h3>
     <br>
     <ion-item>
-      <ion-input [(ngModel)]="nombreInput" label="Nombre" label-placement="fixed" placeholder="Ingrese Nombre"></ion-input>
+      <ion-input [(ngModel)]="nombreInput" label="Nombre" label-placement="floating" placeholder="Ingrese Nombre"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input [(ngModel)]="apellidoInput" label="Apellido" label-placement="fixed" placeholder="Ingrese Apellido"></ion-input>
+      <ion-input [(ngModel)]="apellidoInput" label="Apellido" label-placement="floating" placeholder="Ingrese Apellido"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select [(ngModel)]="semestreSelect" label="Nivel de Educación" placeholder="Make a Selection">
-        <ion-select-option value="1">1° Semestre</ion-select-option>
-        <ion-select-option value="2">2° Semestre</ion-select-option>
-        <ion-select-option value="3">3° Semestre</ion-select-option>
-        <ion-select-option value="4">4° Semestre</ion-select-option>
-        <ion-select-option value="5">5° Semestre</ion-select-option>
-        <ion-select-option value="6">6° Semestre</ion-select-option>
-        <ion-select-option value="7">7° Semestre</ion-select-option>
-        <ion-select-option value="8">8° Semestre</ion-select-option>
-      </ion-select>
+        <ion-input [(ngModel)]="correoInput" label="Correo Electrónico" label-placement="floating" placeholder="Ingrese email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Fecha de nacimiento" label-placement="" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="contrasenaInput" label="Contraseña" label-placement="floating" placeholder="" [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
+      <ion-icon name="{{ contrasenaVisible ? 'eye-off' : 'eye' }}" slot="end" (click)="toggleContrasenaVisibility()"></ion-icon>
     </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="confcontrasenaInput" label="Confirmar Contraseña" label-placement="floating" placeholder="" [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
+      <ion-icon name="{{ contrasenaVisible ? 'eye-off' : 'eye' }}" slot="end" (click)="toggleContrasenaVisibility()"></ion-icon>
+    </ion-item>
+
     <ion-grid>
       <ion-row>
         <ion-col>
           <ion-button expand="full" (click)="limpiarCampos()">Limpiar Campos</ion-button>
         </ion-col>
           <ion-col>
-          <ion-button expand="full" (click)="guardarDatos()">Guardar Datos</ion-button>
+          <ion-button expand="full" (click)="guardarDatos()">Registrarse</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
     <br><br>
-    <ion-button fill="clear" [routerLink]="['/login']">Cerrar Sesión</ion-button>
   </div>
 </div>
 
