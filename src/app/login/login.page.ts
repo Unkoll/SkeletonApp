@@ -40,13 +40,13 @@ export class LoginPage implements OnInit {
 
 
 
-  async validarLogin() {
+  async Login() {
     if (this.loginForm.valid) {
       const usuario = this.loginForm.value.usuario;
       const contraseña = this.loginForm.value.contraseña;
 
       if (usuario === 'ADMIN' && contraseña === '0000') {
-        this.router.navigate(['/tabs/profile'], {
+        this.router.navigate(['/home'], {
           queryParams: { usuarioValue: this.usuarioValue }
         });
       } else {

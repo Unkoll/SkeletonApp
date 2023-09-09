@@ -6,18 +6,18 @@
 
 <form [formGroup]="loginForm">
   <ion-item class="transparent-input">
-    <ion-input [(ngModel)]="usuarioValue" formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Nombre de Usuario" labelPlacement="stacked" placeholder=""></ion-input>
+    <ion-input [(ngModel)]="usuarioValue" formControlName="usuario" id="inputUsuario" style="font-size: 20px;" label="Nombre de Usuario" labelPlacement="floating" placeholder=""></ion-input>
   </ion-item>
   <br>
   <ion-item class="transparent-input">
-    <ion-input [(ngModel)]="contrasenaValue" formControlName="contraseña" id="inputContraseña" style="font-size: 20px;" label="Contraseña" labelPlacement="stacked" placeholder="" type="password"></ion-input>
+    <ion-input [(ngModel)]="contrasenaValue" formControlName="contraseña" id="inputContraseña" style="font-size: 20px;" label="Contraseña" labelPlacement="floating" placeholder="" type="password"></ion-input>
   </ion-item>
 </form>
 
 
 <br>
 <div class="ion-text-center">
-  <ion-button expand="block" (click)="validarLogin()">Ingresar</ion-button>
+  <ion-button expand="block" (click)="Login()">Ingresar</ion-button>
 </div>
 <ion-grid>
   <ion-row>
