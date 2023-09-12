@@ -12,7 +12,7 @@ export class ProfilePage implements OnInit {
 
   nombreInput: string = "";
   apellidoInput: string = "";
-  correoInput: string = "";
+  usuarioInput: string = "";
   contrasenaInput: string = "";
   confcontrasenaInput: string = "";
 
@@ -22,7 +22,7 @@ export class ProfilePage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.nombreInput = params['nombreInput'];
       this.apellidoInput = params['apellidoInput'];
-      this.correoInput = params['correoInput'];
+      this.usuarioInput = params['usuarioInput'];
       this.contrasenaInput = params['contrasenaInput'];
       this.confcontrasenaInput = params['confcontrasenaInput'];
     })
@@ -31,7 +31,7 @@ export class ProfilePage implements OnInit {
   limpiarCampos() {
     this.nombreInput = '';
     this.apellidoInput = '';
-    this.correoInput = '';
+    this.usuarioInput = '';
     this.contrasenaInput = '';
     this.confcontrasenaInput = '';
   }
@@ -43,7 +43,7 @@ export class ProfilePage implements OnInit {
       let cuenta = {
         nombre: this.nombreInput,
         apellido: this.apellidoInput,
-        correo: this.correoInput,
+        correo: this.usuarioInput,
         contrasena: this.contrasenaInput
       }
 

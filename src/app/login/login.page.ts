@@ -40,31 +40,29 @@ export class LoginPage implements OnInit {
 
 
 
-  async Login() {
-    if (this.loginForm.valid) {
-      const usuario = this.loginForm.value.usuario;
-      const contraseña = this.loginForm.value.contraseña;
+  Login() {
+    const usuarioControl = this.loginForm.get('usuario');
+    const contrasenaControl = this.loginForm.get('contraseña');
 
-      if (usuario === 'ADMIN' && contraseña === '0000') {
-        this.router.navigate(['/home'], {
-          queryParams: { usuarioValue: this.usuarioValue }
-        });
+    if (usuarioControl && contrasenaControl) {
+      const usuarioIngresado = usuarioControl.value;
+      const contrasenaIngresada = contrasenaControl.value;
+
+      const cuentaGuardadaString = localStorage.getItem('Cuenta');
+
+      if (cuentaGuardadaString) {
+        const cuentaGuardada = JSON.parse(cuentaGuardadaString);
+
+        if (cuentaGuardada && cuentaGuardada.usuario === usuarioIngresado && cuentaGuardada.contrasena === contrasenaIngresada) {
+          this.router.navigate(['/qr', { usuario: usuarioIngresado }]);
+        } else {
+          alert('Usuario o contraseña incorrectos');
+        }
       } else {
-        const alert = await this.alertController.create({
-          header: 'Error',
-          message: 'Usuario o contraseña incorrectos.',
-          buttons: ['Aceptar']
-        });
-        await alert.present();
+        alert('No se encontraron credenciales almacenadas');
       }
     } else {
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Por favor, ingresa usuario y contraseña.',
-        buttons: ['Aceptar']
-      });
-
-      await alert.present();
+      alert('Error: Los campos del formulario no están disponibles');
     }
   }
 }
