@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
       const usuarioIngresado = usuarioControl.value;
       const contrasenaIngresada = contrasenaControl.value;
 
-      const cuentaGuardadaString = localStorage.getItem('cuenta');
+      const cuentaGuardadaString = localStorage.getItem('Cuenta');
 
       if (cuentaGuardadaString) {
         const cuentaGuardada = JSON.parse(cuentaGuardadaString);
