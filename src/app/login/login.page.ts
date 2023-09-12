@@ -33,8 +33,6 @@ export class LoginPage implements OnInit {
       console.log("entra");
     }
     this.route.queryParams.subscribe(params => {
-      this.usuarioValue = params['usuarioValue'];
-      this.contrasenaValue = params['contrasenaValue'];
     })
   }
 
@@ -48,13 +46,13 @@ export class LoginPage implements OnInit {
       const usuarioIngresado = usuarioControl.value;
       const contrasenaIngresada = contrasenaControl.value;
 
-      const cuentaGuardadaString = localStorage.getItem('Cuenta');
+      const cuentaGuardadaString = localStorage.getItem('cuenta');
 
       if (cuentaGuardadaString) {
         const cuentaGuardada = JSON.parse(cuentaGuardadaString);
 
         if (cuentaGuardada && cuentaGuardada.usuario === usuarioIngresado && cuentaGuardada.contrasena === contrasenaIngresada) {
-          this.router.navigate(['/qr', { usuario: usuarioIngresado }]);
+          this.router.navigate(['/tabs/home', { usuario: usuarioIngresado }]);
         } else {
           alert('Usuario o contraseña incorrectos');
         }

@@ -43,7 +43,7 @@ export class ProfilePage implements OnInit {
       let cuenta = {
         nombre: this.nombreInput,
         apellido: this.apellidoInput,
-        correo: this.usuarioInput,
+        usuario: this.usuarioInput,
         contrasena: this.contrasenaInput
       }
 
