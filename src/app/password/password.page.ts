@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./password.page.scss'],
 })
 export class PasswordPage implements OnInit {
-    correoInput: string = '';
+    usuarioInput: string = '';
     contrasenaInput: string = '';
-    confcontrasenaInput: string = '';
+    nuevaContrasenaInput: string = '';
+    confNuevaContrasenaInput: string = '';
 
   constructor(
     private router: Router,
@@ -20,35 +21,47 @@ export class PasswordPage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.correoInput = params['correoInput'];
-      this.contrasenaInput = params['contrasenaInput'];
-      this.confcontrasenaInput = params['confcontrasenaInput']
+      this.usuarioInput = params['usuarioInput'];
+      this.contrasenaInput = params['contrasenaInput']
+      this.nuevaContrasenaInput = params['nuevaContrasenaInput'];
+      this.confNuevaContrasenaInput = params['confNuevaContrasenaInput']
     })
   }
 
   async cambiarContraseña() {
-    // Obtener el valor del correo electrónico ingresado por el usuario
-    const correo = this.correoInput
+    const cuentaGuardadaString = localStorage.getItem('Cuenta');
 
-    // // Verificar si el correo electrónico existe en el LocalStorage
-    // const storedCuenta = JSON.parse(localStorage.getItem('cuenta'));
-    // if (storedData && storedData.email === email) {
-    //   // Obtener la nueva contraseña ingresada por el usuario
-    //   const newPassword = document.getElementById('newPasswordInput').value;
+    if (cuentaGuardadaString) {
+      const cuentaGuardada = JSON.parse(cuentaGuardadaString);
 
-    //   // Verificar si la contraseña y la confirmación coinciden
-    //   const confirmNewPassword = document.getElementById('confirmNewPasswordInput').value;
-    //   if (newPassword === confirmNewPassword) {
-    //     // Modificar la contraseña en el almacenamiento local
-    //     storedData.password = newPassword;
-    //     localStorage.setItem('userData', JSON.stringify(storedData));
-    //     alert('Contraseña cambiada con éxito.');
-    //   } else {
-    //     alert('La contraseña y la confirmación no coinciden.');
-    //   }
-    // } else {
-    //   alert('El correo electrónico ingresado no coincide con ninguna cuenta.');
-    // }
+      // Verificar si el usuario existe en el LocalStorage
+      if (cuentaGuardada.usuario === this.usuarioInput) {
+        // Verificar si la contraseña actual coincide
+        if (cuentaGuardada.contrasena === this.contrasenaInput) {
+          const nuevaContrasena = this.nuevaContrasenaInput;
+
+          // Validar que la nueva contraseña no sea igual a la contraseña anterior
+          if (nuevaContrasena !== this.contrasenaInput) {
+            cuentaGuardada.contrasena = nuevaContrasena;
+            localStorage.setItem('Cuenta', JSON.stringify(cuentaGuardada));
+            console.log("funciona")
+            alert('Contraseña cambiada con éxito.');
+          } else {
+            console.log('no funciona')
+            alert('La nueva contraseña debe ser diferente de la contraseña anterior.');
+          }
+        } else {
+          console.log('no funciona')
+          alert('La contraseña actual es incorrecta.');
+        }
+      } else {
+        console.log('no funciona')
+        alert('El usuario ingresado no coincide con ninguna cuenta.');
+      }
+    } else {
+      console.log('no funciona')
+      alert('No se encontró ninguna cuenta en el almacenamiento local.');
+    }
   }
 
 

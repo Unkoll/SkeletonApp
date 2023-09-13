@@ -32,9 +32,9 @@ export class QrPage implements OnInit {
     console.debug('Result: ', resultString);
     this.qrResultString = resultString;
 
-    this.router.navigate(['/home'], {
+    this.router.navigate(['/tabs/home'], {
       queryParams: { informacionQR: resultString },
     });
   }
-  
+
 }
