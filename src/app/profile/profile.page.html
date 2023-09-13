@@ -19,8 +19,11 @@
       <ion-input [(ngModel)]="apellidoInput" label="Apellido" label-placement="floating" placeholder="Ingrese Apellido"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input [(ngModel)]="usuarioInput" label="Nombre de usuario" label-placement="floating" placeholder="Ingrese usuario"></ion-input>
+        <ion-input [(ngModel)]="rutInput" label="Rut" label-placement="floating" placeholder="Ingrese Rut sin puntos, con guión"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="usuarioInput" label="Nombre de usuario" label-placement="floating" placeholder="Ingrese usuario"></ion-input>
+  </ion-item>
     <ion-item>
       <ion-input [(ngModel)]="contrasenaInput" label="Contraseña" label-placement="floating" placeholder="" [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
       <ion-icon name="{{ contrasenaVisible ? 'eye' : 'eye-off' }}" slot="end" (click)="toggleContrasenaVisibility()"></ion-icon>

@@ -1,32 +1,22 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content::part(background) {
+  background: #000000;
 }
 
-#container strong {
+ion-toolbar{
+  color:#ffffff;
+  background-color: #ffc4c4;
+}
+
+.headerFooter{
   font-size: 20px;
-  line-height: 26px;
+  padding: 15px;
+  text-shadow: 2px 2px 4px rgba($color: #080000, $alpha: 1.0);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.nombre{
+  font-size: medium;
 }
 
-#container a {
-  text-decoration: none;
-}
-
-.transparent-input {
-  --background: transparent;
-  --border-color: transparent;
+.rut{
+  font-size: medium;
 }
