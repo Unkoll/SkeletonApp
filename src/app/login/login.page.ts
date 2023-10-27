@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
         const cuentaGuardada = JSON.parse(cuentaGuardadaString);
 
         if (cuentaGuardada && cuentaGuardada.usuario === usuarioIngresado && cuentaGuardada.contrasena === contrasenaIngresada) {
-          this.router.navigate(['/qr', { usuario: usuarioIngresado }]);
+          this.router.navigate(['/qr']);
         } else {
           alert('Usuario o contraseña incorrectos');
         }

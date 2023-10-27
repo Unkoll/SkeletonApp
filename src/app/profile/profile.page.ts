@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 @Component({
   selector: 'app-profile',
@@ -10,73 +12,61 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
-  nombreInput: string = "";
-  apellidoInput: string = "";
-  rutInput: string ="";
-  usuarioInput: string = "";
-  contrasenaInput: string = "";
-  confcontrasenaInput: string = "";
+  usuarioRegistrado: any;
+
+  imagenes:any[]=[];
 
   constructor(private router: Router, private route: ActivatedRoute, private alertController: AlertController) { }
 
   ngOnInit() {
+    defineCustomElements(window);
+
     this.route.queryParams.subscribe(params => {
-      this.nombreInput = params['nombreInput'];
-      this.apellidoInput = params['apellidoInput'];
-      this.rutInput = params['rutInput'];
-      this.usuarioInput = params['usuarioInput'];
-      this.contrasenaInput = params['contrasenaInput'];
-      this.confcontrasenaInput = params['confcontrasenaInput'];
+
     })
-  }
 
-  limpiarCampos() {
-    this.nombreInput = '';
-    this.apellidoInput = '';
-    this.rutInput = '';
-    this.usuarioInput = '';
-    this.contrasenaInput = '';
-    this.confcontrasenaInput = '';
-  }
-
-  async guardarDatos() {
-
-    if (this.contrasenaInput === this.confcontrasenaInput && this.contrasenaInput != null) {
-
-      let cuenta = {
-        nombre: this.nombreInput,
-        apellido: this.apellidoInput,
-        rut: this.rutInput,
-        usuario: this.usuarioInput,
-        contrasena: this.contrasenaInput
-      }
-
-      localStorage.setItem("Cuenta", JSON.stringify(cuenta))
-
-      const alert = await this.alertController.create({
-        header: 'Éxito',
-        message: 'Su cuenta ha sido creada.',
-        buttons: ['Aceptar']
-      });
-      await alert.present();
-
-      this.router.navigate(['/login'])
+    const usuarioGuardado = localStorage.getItem('Cuenta');
+    if (usuarioGuardado) {
+      this.usuarioRegistrado = JSON.parse(usuarioGuardado);
     }
-    else{
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Las contraseñas no coinciden.',
-        buttons: ['Aceptar']
-      });
-      await alert.present();
-    }
-
   }
 
-  contrasenaVisible: boolean = false;
+  async takePhoto(){
 
-  toggleContrasenaVisibility() {
-    this.contrasenaVisible = !this.contrasenaVisible;
+    var cSourse = CameraSource.Prompt;
+
+    if ((await Camera.checkPermissions()).camera == 'granted') {
+      const image = await Camera.getPhoto(
+        {
+          resultType:CameraResultType.Uri,
+          quality:100,
+          height:1024,
+          width:1024,
+          source:cSourse,
+          presentationStyle:'popover',
+          promptLabelCancel:"Cancelar",
+          promptLabelHeader:"Seleccione",
+          promptLabelPhoto:"Desde la galeria",
+          promptLabelPicture:"Desde la camara"
+        }
+        );
+
+        if (image.webPath) {
+          var blob = (await fetch(image.webPath)).blob();
+          this.imagenes.unshift({fname:'foto.'+ image.format,src:image.webPath,file:blob});
+
+          var src = image.webPath;
+          
+          this.usuarioRegistrado.foto = src;
+        }
+
+        console.log("IMAGENES GUARDADAS ===> ", this.imagenes);
+
+
+        localStorage.setItem("Cuenta", JSON.stringify(this.usuarioRegistrado));
+
+    }
   }
 
 }
+
