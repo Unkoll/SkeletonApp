@@ -1,18 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Perfil</ion-title>
+    <ion-title class="ion-text-center">Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="ion-padding">
-    <h1>it works</h1>
-
-    <ion-button (click)=takePhoto()>Foto</ion-button>
-
+  <div class="ion-padding ion-text-center">
+    <h1></h1>
 
     <ion-card>
-        <ion-img [src]="usuarioRegistrado.foto"></ion-img>
+      <ion-img [src]="usuarioRegistrado.foto"></ion-img>
       <ion-card-header>
         <ion-card-title>Datos de usuario</ion-card-title>
         <ion-card-subtitle>Nombre: {{ usuarioRegistrado.nombre }} {{ usuarioRegistrado.apellido }}</ion-card-subtitle>
@@ -20,6 +17,19 @@
       </ion-card-header>
     </ion-card>
 
-    
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)=takePhoto()>Actualizar foto</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="logout()">Cerrar sesión</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div >
+
+    </div>
   </div>
 </ion-content>

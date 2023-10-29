@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-error404',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Error404Page implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+
+  back() {
+    if (localStorage.getItem('Cuenta') != null) {
+      console.log("Iniciado")
+      this.router.navigate(['/tabs/home']);
+    }
+    else {
+      console.log("No Iniciado")
+      this.router.navigate(['/']);
+    }
   }
 
 }

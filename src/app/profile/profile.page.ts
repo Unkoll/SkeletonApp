@@ -56,7 +56,7 @@ export class ProfilePage implements OnInit {
           this.imagenes.unshift({fname:'foto.'+ image.format,src:image.webPath,file:blob});
 
           var src = image.webPath;
-          
+
           this.usuarioRegistrado.foto = src;
         }
 
@@ -66,6 +66,11 @@ export class ProfilePage implements OnInit {
         localStorage.setItem("Cuenta", JSON.stringify(this.usuarioRegistrado));
 
     }
+  }
+
+  logout(){
+    localStorage.removeItem("Cuenta")
+    this.router.navigate(['/']);
   }
 
 }
