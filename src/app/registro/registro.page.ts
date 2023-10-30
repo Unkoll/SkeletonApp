@@ -71,6 +71,7 @@ export class RegistroPage implements OnInit {
     this.usuarioInput = '';
     this.contrasenaInput = '';
     this.confcontrasenaInput = '';
+    this.regionSel = 0;
   }
 
   async guardarDatos() {
@@ -83,7 +84,9 @@ export class RegistroPage implements OnInit {
         rut: this.rutInput,
         usuario: this.usuarioInput,
         contrasena: this.contrasenaInput,
-        foto: ""
+        foto: this.foto,
+        regiones: this.regionSel ,
+        comunas: this.comunaSel,
       }
 
       localStorage.setItem("Cuenta", JSON.stringify(cuenta))

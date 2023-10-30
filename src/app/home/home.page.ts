@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PlacesService } from '../services';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomePage implements OnInit {
   informacionQR: string = '';
   usuarioRegistrado: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private placesServices: PlacesService) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {

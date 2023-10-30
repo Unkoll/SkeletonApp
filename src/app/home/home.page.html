@@ -13,8 +13,12 @@
 
     <ion-card-content>
       <div *ngIf="usuarioRegistrado">
+        <h1 class="foto"> {{ usuarioRegistrado.foto }}</h1>
         <h1 class="nombre">Nombre Alumno: {{ usuarioRegistrado.nombre }} {{ usuarioRegistrado.apellido }}</h1>
         <h1 class="rut">Rut: {{ usuarioRegistrado.rut }}</h1>
+        <h1 class="region">Región: {{ usuarioRegistrado.regiones }}</h1>
+        <h1 class="comuna">Comuna: {{ usuarioRegistrado.comunas }}</h1>
+        <h1 class="geolocalizacion">Geolocalizacion: </h1>
       </div>
     </ion-card-content>
   </ion-card>

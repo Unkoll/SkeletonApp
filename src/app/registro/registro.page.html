@@ -5,61 +5,68 @@
     </ion-toolbar>
   </ion-header>
 
-<div class="ion-padding">
-  <div class="ion-text-center">
-    <h1>Registro de usuario</h1>
-  </div>
-  <br><br><br><br>
-  <div class="ion-text-center">
-    <br>
-    <ion-item>
-      <ion-input [(ngModel)]="nombreInput" label="Nombre" label-placement="floating" placeholder="Ingrese Nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="apellidoInput" label="Apellido" label-placement="floating" placeholder="Ingrese Apellido"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-input [(ngModel)]="rutInput" label="Rut" label-placement="floating" placeholder="Ingrese Rut sin puntos, con guión"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="usuarioInput" label="Nombre de usuario" label-placement="floating" placeholder="Ingrese usuario"></ion-input>
-  </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="contrasenaInput" label="Contraseña" label-placement="floating" placeholder="" [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
-      <ion-icon name="{{ contrasenaVisible ? 'eye' : 'eye-off' }}" slot="end" (click)="toggleContrasenaVisibility()"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="confcontrasenaInput" label="Confirmar Contraseña" label-placement="floating" placeholder="" [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
-      <ion-icon name="{{ contrasenaVisible ? 'eye' : 'eye-off' }}" slot="end" (click)="toggleContrasenaVisibility()"></ion-icon>
-    </ion-item>
+  <div class="ion-padding">
+    <div class="ion-text-center">
+      <h1>Registro de usuario</h1>
+    </div>
+    <br><br><br><br>
+    <div class="ion-text-center">
+      <br>
+      <ion-item>
+        <ion-input [(ngModel)]="nombreInput" label="Nombre" label-placement="floating"
+          placeholder="Ingrese Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="apellidoInput" label="Apellido" label-placement="floating"
+          placeholder="Ingrese Apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="rutInput" label="Rut" label-placement="floating"
+          placeholder="Ingrese Rut sin puntos, con guión"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="usuarioInput" label="Nombre de usuario" label-placement="floating"
+          placeholder="Ingrese usuario"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-select (ionChange)="cargarComuna()" [(ngModel)]="regionSel"  label="Region" placeholder="Seleccione">
-        <ion-select-option *ngFor="let i of regiones" [value]="i.id">{{i.nombre}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-select [disabled]="seleccionComuna" [(ngModel)]="regionSel"  label="Comuna" placeholder="Seleccione">
-        <ion-select-option *ngFor="let i of comunas" [value]="i.id">{{i.nombre}}</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-select (ionChange)="cargarComuna()" [(ngModel)]="regionSel" label="Region" placeholder="Seleccione">
+          <ion-select-option *ngFor="let i of regiones" [value]="i.id">{{i.nombre}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select [disabled]="seleccionComuna" [(ngModel)]="regionSel" label="Comuna" placeholder="Seleccione">
+          <ion-select-option *ngFor="let i of comunas" [value]="i.id">{{i.nombre}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="contrasenaInput" label="Contraseña" label-placement="floating" placeholder=""
+          [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
+        <ion-icon name="{{ contrasenaVisible ? 'eye' : 'eye-off' }}" slot="end"
+          (click)="toggleContrasenaVisibility()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="confcontrasenaInput" label="Confirmar Contraseña" label-placement="floating"
+          placeholder="" [type]="contrasenaVisible ? 'text' : 'password'"></ion-input>
+        <ion-icon name="{{ contrasenaVisible ? 'eye' : 'eye-off' }}" slot="end"
+          (click)="toggleContrasenaVisibility()"></ion-icon>
+      </ion-item>
 
-
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="full" (click)="limpiarCampos()">Limpiar Campos</ion-button>
-        </ion-col>
+      <ion-grid>
+        <ion-row>
           <ion-col>
-          <ion-button expand="full" (click)="guardarDatos()">Registrarse</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button expand="full" [routerLink]="['/login']">Volver</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <br><br>
+            <ion-button expand="full" (click)="limpiarCampos()">Limpiar Campos</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="full" (click)="guardarDatos()">Registrarse</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="full" [routerLink]="['/login']">Volver</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <br><br>
+    </div>
   </div>
-</div>
 
 </ion-content>
