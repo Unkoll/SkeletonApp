@@ -19,7 +19,7 @@ export class Error404Page implements OnInit {
   back() {
     if (localStorage.getItem('Cuenta') != null) {
       console.log("Iniciado")
-      this.router.navigate(['/tabs/home']);
+      this.router.navigate(['/qr']);
     }
     else {
       console.log("No Iniciado")
