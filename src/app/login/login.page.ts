@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { HelperService } from 'src/app/services/helper.service';
+
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private alertController: AlertController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private helper:HelperService
   ) {
     this.loginForm = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -63,4 +66,10 @@ export class LoginPage implements OnInit {
       alert('Error: Los campos del formulario no están disponibles');
     }
   }
+
+  registro(){
+    console.log("funciono")
+    this.router.navigateByUrl("registro");
+  }
+
 }

@@ -33,6 +33,18 @@
       <ion-icon name="{{ contrasenaVisible ? 'eye' : 'eye-off' }}" slot="end" (click)="toggleContrasenaVisibility()"></ion-icon>
     </ion-item>
 
+    <ion-item>
+      <ion-select (ionChange)="cargarComuna()" [(ngModel)]="regionSel"  label="Region" placeholder="Seleccione">
+        <ion-select-option *ngFor="let i of regiones" [value]="i.id">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select [disabled]="seleccionComuna" [(ngModel)]="regionSel"  label="Comuna" placeholder="Seleccione">
+        <ion-select-option *ngFor="let i of comunas" [value]="i.id">{{i.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
     <ion-grid>
       <ion-row>
         <ion-col>
