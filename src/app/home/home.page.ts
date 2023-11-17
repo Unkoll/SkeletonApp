@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlacesService } from '../services';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +9,16 @@ import { PlacesService } from '../services';
 export class HomePage implements OnInit {
   informacionQR: string = '';
   usuarioRegistrado: any;
+  latitud: string | undefined;
+  longitud: string | undefined;
 
-  constructor(private route: ActivatedRoute, private placesServices: PlacesService) {}
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {}
+
+  async ngOnInit() {
+
+    await this.obtenerUbicacion();
+
     this.route.queryParams.subscribe((params) => {
       if (params['informacionQR']) { 
         this.informacionQR = params['informacionQR'];
@@ -25,4 +30,21 @@ export class HomePage implements OnInit {
       this.usuarioRegistrado = JSON.parse(usuarioGuardado);
     }
   }
+  obtenerUbicacion() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitud = position.coords.latitude.toString();
+        this.longitud = position.coords.longitude.toString();
+      });
+    }
+  }
+
+  // Función para convertir coordenadas decimales a DMM
+  convertirADMM(coordenada: number): string {
+    const grados = Math.floor(coordenada);
+    const minutosDecimal = (coordenada - grados) * 60;
+    const minutos = minutosDecimal.toFixed(4);
+    return `${grados}° ${minutos}'`;
+  }
+
 }
