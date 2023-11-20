@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
-
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private alertController: AlertController,
     private route: ActivatedRoute,
-    private helper:HelperService
+    private helper:HelperService,
+    private authService: AuthService
   ) {
     this.loginForm = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -55,6 +56,8 @@ export class LoginPage implements OnInit {
         const cuentaGuardada = JSON.parse(cuentaGuardadaString);
 
         if (cuentaGuardada && cuentaGuardada.usuario === usuarioIngresado && cuentaGuardada.contrasena === contrasenaIngresada) {
+          // this.authService.login();
+          localStorage.setItem("isLogged", "true")
           this.router.navigate(['/qr']);
         } else {
           alert('Usuario o contraseña incorrectos');

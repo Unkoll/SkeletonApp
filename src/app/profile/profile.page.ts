@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfilePage implements OnInit {
 
   imagenes:any[]=[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private alertController: AlertController) { }
+  constructor(private router: Router, private route: ActivatedRoute, private alertController: AlertController, private authService: AuthService) { }
 
   ngOnInit() {
     defineCustomElements(window);
@@ -69,7 +70,7 @@ export class ProfilePage implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem("Cuenta")
+    localStorage.setItem('isLogged', "false")
     this.router.navigate(['/']);
   }
 
