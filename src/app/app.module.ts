@@ -13,7 +13,7 @@ import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot({rippleEffect: false, mode: 'md'}), AppRoutingModule, HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthService],
   bootstrap: [AppComponent],
 })
